@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import os
-import keep_alive
 import json
 from discord.ext.commands import has_permissions, MissingPermissions
 
@@ -24,8 +23,8 @@ for filename in os.listdir('./cogs'):
 
 @client.event
 async def on_member_join(member):
-  channel = client.get_channel(805221709854670898)
-  embed = discord.Embed(title = "Welcome", description = f"Welcome ***{member.name}*** to {member.guild.name} , also visit our bot panel https://vzuniversesmm.com/ . Hope you have a great stay!", colour = 0x00c8ff)
+  channel = client.get_channel()#enter the channel ID where you want to send the welcome message
+  embed = discord.Embed(title = "Welcome", description = f"Welcome ***{member.name}*** to {member.guild.name}", colour = 0x00c8ff)
   await channel.send(embed = embed)
 
 
@@ -49,5 +48,4 @@ async def reload(ctx, extension):
 
 
 
-keep_alive.keep_alive()
 client.run(os.getenv("token"))
